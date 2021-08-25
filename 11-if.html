@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        let n
+        let ans
+        function hi_low(num) {
+            n = parseInt(num)
+            if (n > 5) {
+                ans = "Hi"
+            } else {
+                ans = "Low"
+            }
+            return ans
+        }
+    </script>
+    <title>Document</title>
+</head
+<body>
+    Input Number : <input type="text" name="" id="num1">
+    <br>
+    <br>
+    <input type="button" value="Submit" onclick="document.getElementById('output').innerHTML = hi_low(document.getElementById('num1').value)">
+    <br>
+    <br>
+    <p id="output"></p>
+</body>
+</html>  
