@@ -98,7 +98,10 @@
                     <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="24-set-local-storage.html">page24</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="25-get-local-storage.html">page25</a>
                 </li>
             </ul>
         </div>
@@ -173,12 +176,11 @@
             }
             localStorage.setItem('employee', JSON.stringify(employee))
             local_employee = localStorage.getItem('employee')
-            
             document.getElementById('empid').value = ''
             document.getElementById('empname').value = ''
-            alert('บันทึกข้อมูลเรียบร้อยแล้ว')
+            alert('บันทึกข้อมูลสำเร็จ')
             } else {
-                alert('กรุณาป้อนข้อมูลค้าบสุดหล่อ')
+                alert('กรุณาป้อนข้อมูล')
             }
             
         }
@@ -189,19 +191,14 @@
             
         }
 
-        
         function deleteStorage() {
-            if (confirm('ต้องการลบหรือไม่'))
+            if (confirm('ต้องการลบหรือไม่')) {
             localStorage.removeItem('employee')
             employee = []
-            local_employee = null
+            local_employee = null }
         }
  
     </script>
 </body>
 
 </html>
-
-        
-            
-  
