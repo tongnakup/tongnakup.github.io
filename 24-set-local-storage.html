@@ -127,7 +127,8 @@
                         </div>
                         <input class = "btn btn-danger w-25"  type="submit" value="Submit" onclick="setdata()">
                         <input class = "btn btn-danger w-25"  type="reset" value="Reset" onclick="resetdata()">
-                        
+                        <button class = "btn btn-warning " type="button" value="Delete Stoage" onclick="deleteStorage()">Delete</button>
+
                     </p>
                 
  
@@ -159,27 +160,27 @@
         let employee = []
         let empid
         let empname
-        
-        // let local_empid = []
-        // let local_empname = []
 
         function setdata() {
-            let local_employee = localStorage.getItem('employee')
             employee = eval(local_employee)
             empid = document.getElementById('empid').value
             empname = document.getElementById('empname').value
-            console.log(empid + '' + empname)
-            employee.push({"empid" : empid, "empname" : empname})
-            console.log(employee)
-            //employee = JSON.stringify({"empid" : empid,"empname" : empname})
+            if ( empid != '' && empname != '' ) {
+                if (employee == null) {
+                employee = [{"empid" : empid, "empname" : empname}]
+            } else {
+                employee.push({"empid" : empid, "empname" : empname})
+            }
             localStorage.setItem('employee', JSON.stringify(employee))
-            // local_empid.push(empid)
-            // local_empname.push(empname)
-            // console.log(local_empid)
-            // localStorage.setItem('empid',local_empid)
-            // localStorage.setItem('empname',local_empname)
+            local_employee = localStorage.getItem('employee')
+            
             document.getElementById('empid').value = ''
             document.getElementById('empname').value = ''
+            alert('บันทึกข้อมูลเรียบร้อยแล้ว')
+            } else {
+                alert('กรุณาป้อนข้อมูลค้าบสุดหล่อ')
+            }
+            
         }
 
         function resetdata() {
@@ -187,8 +188,20 @@
         document.getElementById('empname').value = ''
             
         }
+
+        
+        function deleteStorage() {
+            if (confirm('ต้องการลบหรือไม่'))
+            localStorage.removeItem('employee')
+            employee = []
+            local_employee = null
+        }
  
     </script>
 </body>
 
 </html>
+
+        
+            
+  
