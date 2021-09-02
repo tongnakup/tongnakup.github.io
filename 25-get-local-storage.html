@@ -58,7 +58,7 @@
     <title>25-get-local-storage.html</title>
 </head>
 
-<body onload="get_employee()">
+<body onload="get_em()">
     <div class="jumbotron jumbotron-fluid mb-0"
         style="background-image: url(https://www.appliedimage.com/wp-content/uploads/2013/10/header-background.png); background-size: cover;">
 
@@ -67,7 +67,7 @@
             autoplay loop muted></video>
 
         <div class="container text-light">
-            <h1 class="display-3">Your Website</h1>
+            <h1 class="display-3">PEERAPAT</h1>
             <p class="lead"></p>
         </div>
     </div>
@@ -98,7 +98,10 @@
                     <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="24-set-local-storage.html">page24</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="25-get-local-storage.html">page25</a>
                 </li>
             </ul>
         </div>
@@ -112,9 +115,28 @@
                 <div class="card-body">
                     <h5 class="card-title">แสดงข้อมูลพนักงาน</h5>
                     
-                    <p class="card-text" id = 'output'>
-                                     
-                    </p>                 
+                    <p class="card-text" id="output"> </p>
+                    <table id="emp_ta" class="table  table-striped  table-danger table-bordered">
+                        <thead class="bg-danger text-light">
+                            <tr>
+                                <th>รหัสพนักงาน</th>
+                                <th>ชื่อพนักงาน</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <tr>
+                                <td scope="row"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td scope="row"></td>
+                                <td></td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                
+ 
+ 
                 </div>
             </div>
         </div>
@@ -137,24 +159,34 @@
         crossorigin="anonymous"></script>
 
         <!-- จาวาสคริป -->
-    <script>
-        let employee
-        let emp = []
-        // let empid
-        // let empname
-        function get_employee() {
-           employee = localStorage.getItem('employee')
-           emp = eval(employee)
-        //    document.getElementById('output').innerHTML = employee + '<br>'
-        //    document.getElementById('output').innerHTML += emp[0]['empid'] + '' + emp [0]['empname']
-        for (let i of emp) {
-            document.getElementById('output').innerHTML += i.empid + '' + i.empname + '<br>'
+        <script>
+            let employee
+            let emp = []
+            let emp_tb
+            let row
+            let cell1
+            let cell2
 
-        }
-       }
-        
- 
-    </script>
+            function get_em() {
+                employee = localStorage.getItem('employee')
+                emp = eval(employee)
+                emp_tb = document.getElementById('emp_ta').getElementsByTagName('tbody')[0]
+                if (emp != null) {
+                    for (let i of emp) {
+                    row = emp_tb.insertRow()
+                    cell1 = row.insertCell()
+                    cell2 = row.insertCell()
+                    cell1.innerHTML = i .empid
+                    cell2.innerHTML = i .empname  
+
+                } 
+                                 
+                    //document.getElementById('output').innerHTML += i.empid +' '+ i.empname + '<br>'
+                } else {
+                    document.getElementById('output').innerHTML = 'ไม่พบข้อมูลพนักงาน'
+                }
+            }
+        </script>
 </body>
 
 </html>
